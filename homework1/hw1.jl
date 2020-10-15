@@ -228,11 +228,11 @@ md"""
 # ╔═╡ f6898df6-ee07-11ea-2838-fde9bc739c11
 function mean_colors(image)
 	
-	return missing
+	return sum(image)/length(image)
 end
 
 # ╔═╡ d75ec078-ee0d-11ea-3723-71fb8eecb040
-
+floor(1.2)
 
 # ╔═╡ f68d4a36-ee07-11ea-0832-0360530f102e
 md"""
@@ -244,12 +244,11 @@ md"""
 begin
 	function quantize(x::Number)
 		
-		return missing
+		return floor(x*10)/10
 	end
 	
 	function quantize(color::AbstractRGB)
-		# you will write me in a later exercise!
-		return missing
+		return floor(color*10)/10
 	end
 	
 	function quantize(image::AbstractMatrix)
