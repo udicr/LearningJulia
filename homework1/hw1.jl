@@ -248,12 +248,13 @@ begin
 	end
 	
 	function quantize(color::AbstractRGB)
-		return floor(color*10)/10
+		
+		return RGB(floor(color.r*10)/10,floor(color.g*10)/10,floor(color.b*10)/10)
 	end
 	
 	function quantize(image::AbstractMatrix)
-		# you will write me in a later exercise!
-		return missing
+		
+		return quantize.(image)
 	end
 end
 
@@ -292,7 +293,7 @@ md"""
 # ╔═╡ 63e8d636-ee0b-11ea-173d-bd3327347d55
 function invert(color::AbstractRGB)
 	
-	return missing
+	return RGB(1-color.r,1-color.g,1-color.b)
 end
 
 # ╔═╡ 2cc2f84e-ee0d-11ea-373b-e7ad3204bb00
@@ -312,9 +313,6 @@ invert(red)
 
 # ╔═╡ 846b1330-ee0b-11ea-3579-7d90fafd7290
 md"Can you invert the picture of Philip?"
-
-# ╔═╡ 943103e2-ee0b-11ea-33aa-75a8a1529931
-philip_inverted = missing
 
 # ╔═╡ f6d6c71a-ee07-11ea-2b63-d759af80707b
 md"""
@@ -399,6 +397,9 @@ mean_colors(philip)
 
 # ╔═╡ 9751586e-ee0c-11ea-0cbb-b7eda92977c9
 quantize(philip)
+
+# ╔═╡ 943103e2-ee0b-11ea-33aa-75a8a1529931
+philip_inverted = invert.(philip)
 
 # ╔═╡ ac15e0d0-ee0c-11ea-1eaf-d7f88b5df1d7
 noisify(philip, philip_noise)
